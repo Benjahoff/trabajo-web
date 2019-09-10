@@ -1,5 +1,5 @@
 <?php
-    require_once('controllers/task.controller.php');
+    require_once('controllers/inicio.controller.php');
 
     // si no viene una "action", definimos una por defecto
     if ($_GET['action'] == '')
@@ -9,13 +9,21 @@
     $partesURL = explode('/', $_GET['action']);
     
     switch ($partesURL[0]) {
-        case 'tarea':
-            $controller = new TaskController();
-            $controller->showTask($partesURL[1]);
+        case 'inicio':
+            $controller = new InicioController();
+            $controller -> mostrarInicio();
             break;
-        
+        case 'alumnos':
+        $controller = new InicioController();
+        $controller ->showStudents();
+        break;
+        case 'administrador':
+        $controller = new InicioController();
+        $controller -> mostrarInicio();
+        break;
         default:
-            echo "<h1>Error 404 - Page not found </h1>";
+            $controller = new InicioController();
+            $controller -> mostrarInicio();
             break;
     }
     
